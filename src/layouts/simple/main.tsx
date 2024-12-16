@@ -46,7 +46,7 @@ export function CompactContent({
         flex: '1 1 auto',
         textAlign: 'center',
         flexDirection: 'column',
-        p: theme.spacing(3, 2, 10, 2),
+        p: theme.spacing(2, 1, 10, 1),
         maxWidth: 'var(--layout-simple-content-compact-width)',
         [theme.breakpoints.up(layoutQuery)]: {
           justifyContent: 'center',
