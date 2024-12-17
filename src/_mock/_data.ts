@@ -29,6 +29,9 @@ export const _users = [...Array(24)].map((_, index) => ({
   avatarUrl: `/assets/images/avatar/avatar-${index + 1}.webp`,
   status: index % 4 ? 'active' : 'banned',
   salary: _price(index) * 1000,
+  phone: 12345678,
+  email: `user${index + 1}@minimals.cc`,
+  gender: index % 2 ? 'male' : 'female',
   role:
     [
       'Leader',

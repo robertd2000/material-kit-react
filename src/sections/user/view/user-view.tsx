@@ -8,6 +8,7 @@ import TableBody from '@mui/material/TableBody';
 import Typography from '@mui/material/Typography';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
+import { Link } from '@mui/material';
 
 import { _users } from 'src/_mock';
 import { DashboardContent } from 'src/layouts/dashboard';
@@ -45,13 +46,16 @@ export function UserView() {
         <Typography variant="h4" flexGrow={1}>
           Users
         </Typography>
-        <Button
-          variant="contained"
-          color="inherit"
-          startIcon={<Iconify icon="mingcute:add-line" />}
-        >
-          New user
-        </Button>
+
+        <Link href="/user/create">
+          <Button
+            variant="contained"
+            color="inherit"
+            startIcon={<Iconify icon="mingcute:add-line" />}
+          >
+            New user
+          </Button>
+        </Link>
       </Box>
 
       <Card>
@@ -84,6 +88,9 @@ export function UserView() {
                   { id: 'role', label: 'Должность' },
                   { id: 'status', label: 'Статус' },
                   { id: 'salary', label: 'Зарплата' },
+                  { id: 'phone', label: 'Телефон' },
+                  { id: 'email', label: 'email' },
+                  { id: 'gender', label: 'Пол' },
                   { id: '' },
                 ]}
               />

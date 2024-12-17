@@ -25,6 +25,9 @@ export type UserProps = {
   avatarUrl: string;
   isVerified: boolean;
   salary: number;
+  phone: number;
+  email: string;
+  gender: string;
 };
 
 type UserTableRowProps = {
@@ -73,6 +76,18 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
 
         <TableCell>
           <Label>{row.salary}</Label>
+        </TableCell>
+
+        <TableCell>
+          <Label>{row.phone}</Label>
+        </TableCell>
+
+        <TableCell>
+          <Label>{row.email}</Label>
+        </TableCell>
+
+        <TableCell>
+          <Label>{row.gender}</Label>
         </TableCell>
 
         <TableCell align="right">
