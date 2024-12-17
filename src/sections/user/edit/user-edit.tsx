@@ -7,7 +7,7 @@ export function UserEdit() {
     <DashboardContent>
       <Box display="flex" alignItems="center" mb={5}>
         <Typography variant="h4" flexGrow={1}>
-          Edit User
+          Редактировать сотрудника
         </Typography>
       </Box>
 
@@ -19,7 +19,7 @@ export function UserEdit() {
                 fullWidth
                 required
                 name="firts_name"
-                label="Firts Name"
+                label="Имя"
                 InputLabelProps={{ shrink: true }}
                 sx={{ mb: 3 }}
               />
@@ -30,7 +30,7 @@ export function UserEdit() {
                 fullWidth
                 required
                 name="last_name"
-                label="Last Name"
+                label="Фамилия"
                 InputLabelProps={{ shrink: true }}
                 type="text"
                 sx={{ mb: 3 }}
@@ -42,7 +42,7 @@ export function UserEdit() {
                 fullWidth
                 required
                 name="email"
-                label="Email address"
+                label="Email"
                 InputLabelProps={{ shrink: true }}
                 sx={{ mb: 3 }}
               />
@@ -53,7 +53,7 @@ export function UserEdit() {
                 fullWidth
                 required
                 name="phone"
-                label="Phone number"
+                label="Номер телефона"
                 InputLabelProps={{ shrink: true }}
                 type="text"
                 sx={{ mb: 3 }}
@@ -64,7 +64,7 @@ export function UserEdit() {
               <TextField
                 fullWidth
                 multiline
-                label="Adress"
+                label="Адрес"
                 name="Adress"
                 id="Adress"
                 aria-describedby="my-helper-text"
@@ -78,7 +78,7 @@ export function UserEdit() {
                 fullWidth
                 required
                 name="role"
-                label="Role"
+                label="Должность"
                 InputLabelProps={{ shrink: true }}
                 sx={{ mb: 3 }}
               />
@@ -89,7 +89,7 @@ export function UserEdit() {
                 fullWidth
                 required
                 name="salary"
-                label="Salary"
+                label="ЗП"
                 InputLabelProps={{ shrink: true }}
                 type="text"
                 sx={{ mb: 3 }}
@@ -100,7 +100,7 @@ export function UserEdit() {
               <TextField
                 fullWidth
                 name="gender"
-                label="Gender"
+                label="Пол"
                 InputLabelProps={{ shrink: true }}
                 sx={{ mb: 3 }}
               />
@@ -111,7 +111,7 @@ export function UserEdit() {
                 fullWidth
                 required
                 name="Status"
-                label="Status"
+                label="Статус"
                 InputLabelProps={{ shrink: true }}
                 type="text"
                 sx={{ mb: 3 }}
@@ -122,36 +122,26 @@ export function UserEdit() {
               <TextField
                 fullWidth
                 multiline
-                label="Education"
+                label="Образование"
                 name="Education"
                 id="Education"
                 aria-describedby="my-helper-text"
                 minRows={5}
-                placeholder="Education"
+                placeholder="Образование"
               />
             </Grid>
           </Grid>
 
           <Grid container marginTop={4} spacing={2}>
             <Grid item>
-              <LoadingButton
-                size="large"
-                type="submit"
-                variant="contained"
-                // onClick={handleSignIn}
-              >
-                Create
+              <LoadingButton size="large" type="submit" variant="contained">
+                Сохранить
               </LoadingButton>
             </Grid>
 
             <Grid item>
-              <LoadingButton
-                size="large"
-                color="inherit"
-                variant="contained"
-                // onClick={handleSignIn}
-              >
-                Cancel
+              <LoadingButton size="large" color="inherit" variant="contained">
+                Отмена
               </LoadingButton>{' '}
             </Grid>
           </Grid>
