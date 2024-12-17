@@ -38,7 +38,7 @@ export function UserTableToolbar({ numSelected, filterName, onFilterName }: User
           fullWidth
           value={filterName}
           onChange={onFilterName}
-          placeholder="Search user..."
+          placeholder="Искать сотрудника..."
           startAdornment={
             <InputAdornment position="start">
               <Iconify width={20} icon="eva:search-fill" sx={{ color: 'text.disabled' }} />

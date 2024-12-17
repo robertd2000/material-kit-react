@@ -44,7 +44,7 @@ export function UserView() {
     <DashboardContent>
       <Box display="flex" alignItems="center" mb={5}>
         <Typography variant="h4" flexGrow={1}>
-          Users
+          Сотрудники
         </Typography>
 
         <Link href="/user/create">
@@ -53,7 +53,7 @@ export function UserView() {
             color="inherit"
             startIcon={<Iconify icon="mingcute:add-line" />}
           >
-            New user
+            Создать сотрудника
           </Button>
         </Link>
       </Box>
@@ -139,7 +139,7 @@ export function UserView() {
 export function useTable() {
   const [page, setPage] = useState(0);
   const [orderBy, setOrderBy] = useState('name');
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [selected, setSelected] = useState<string[]>([]);
   const [order, setOrder] = useState<'asc' | 'desc'>('asc');
 

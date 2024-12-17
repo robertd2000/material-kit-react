@@ -1,4 +1,5 @@
 import type { Theme } from '@mui/material/styles';
+import { ruRU } from '@mui/material/locale';
 
 import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
 
@@ -18,7 +19,7 @@ export function createTheme(): Theme {
     shouldSkipGeneratingVar,
   };
 
-  const theme = extendTheme(initialTheme);
+  const theme = extendTheme(initialTheme, ruRU);
 
   return theme;
 }
