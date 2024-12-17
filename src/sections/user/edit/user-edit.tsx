@@ -69,7 +69,7 @@ export function UserEdit() {
                 id="Adress"
                 aria-describedby="my-helper-text"
                 minRows={5}
-                placeholder="Adress"
+                placeholder="Адрес"
               />
             </Grid>
 
