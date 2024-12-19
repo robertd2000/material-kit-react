@@ -6,9 +6,9 @@ import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import { useTheme } from '@mui/material/styles';
 
-import { _langs, _notifications } from 'src/_mock';
+import { _langs, _notifications } from 'src/shared/_mock';
 
-import { Iconify } from 'src/components/iconify';
+import { Iconify } from 'src/shared/ui/iconify';
 
 import { Main } from './main';
 import { layoutClasses } from '../classes';

@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 
 import { CONFIG } from 'src/config-global';
 
-import { NotFoundView } from 'src/sections/error';
+import { NotFoundView } from 'src/widgets/error';
 
 // ----------------------------------------------------------------------
 

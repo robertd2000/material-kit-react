@@ -5,9 +5,9 @@ import Alert from '@mui/material/Alert';
 
 import { RouterLink } from 'src/routes/components';
 
-import { stylesMode } from 'src/theme/styles';
+import { stylesMode } from 'src/shared/theme/styles';
 
-import { Logo } from 'src/components/logo';
+import { Logo } from 'src/shared/ui/logo';
 
 import { Main } from './main';
 import { HeaderSection } from '../core/header-section';

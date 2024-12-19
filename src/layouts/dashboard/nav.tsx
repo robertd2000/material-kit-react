@@ -11,10 +11,10 @@ import Drawer, { drawerClasses } from '@mui/material/Drawer';
 import { usePathname } from 'src/routes/hooks';
 import { RouterLink } from 'src/routes/components';
 
-import { varAlpha } from 'src/theme/styles';
+import { varAlpha } from 'src/shared/theme/styles';
 
-import { Logo } from 'src/components/logo';
-import { Scrollbar } from 'src/components/scrollbar';
+import { Logo } from 'src/shared/ui/logo';
+import { Scrollbar } from 'src/shared/ui/scrollbar';
 
 import { WorkspacesPopover } from '../components/workspaces-popover';
 

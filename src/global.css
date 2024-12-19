@@ -13,10 +13,10 @@
 * Plugins
 *************************************** */
 /* scrollbar */
-@import './components/scrollbar/styles.css';
+@import './shared/ui/scrollbar/styles.css';
 
 /* chart */
-@import './components/chart/styles.css';
+@import './shared/ui/chart/styles.css';
 
 /** **************************************
 * Baseline

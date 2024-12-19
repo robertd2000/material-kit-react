@@ -9,7 +9,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
 
-import { bgBlur, varAlpha } from 'src/theme/styles';
+import { bgBlur, varAlpha } from 'src/shared/theme/styles';
 
 import { layoutClasses } from '../classes';
 

@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 import { CONFIG } from 'src/config-global';
-import { UserEdit } from 'src/sections/user/edit';
+import { UserEdit } from 'src/widgets/user/edit';
 
 // ----------------------------------------------------------------------
 
