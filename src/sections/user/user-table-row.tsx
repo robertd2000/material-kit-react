@@ -12,7 +12,7 @@ import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 
 import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // ----------------------------------------------------------------------
 
@@ -25,9 +25,11 @@ export type UserProps = {
   avatarUrl: string;
   isVerified: boolean;
   salary: number;
-  phone: number;
+  phone: string;
   email: string;
   gender: string;
+  experience: number;
+  grade: string;
 };
 
 type UserTableRowProps = {
@@ -47,25 +49,27 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
     setOpenPopover(null);
   }, []);
 
+  const navigate = useNavigate();
+
+  const handleEdit = useCallback(() => {
+    handleClosePopover();
+    navigate(`/user/${row.id}`);
+  }, [handleClosePopover, navigate, row.id]);
+
   return (
     <>
-      <TableRow
-        hover
-        tabIndex={-1}
-        role="checkbox"
-        selected={selected}
-        component={Link}
-        to={`/user/${row.id}`}
-      >
+      <TableRow hover tabIndex={-1} role="checkbox" selected={selected}>
         <TableCell padding="checkbox">
           <Checkbox disableRipple checked={selected} onChange={onSelectRow} />
         </TableCell>
 
         <TableCell component="th" scope="row">
-          <Box gap={2} display="flex" alignItems="center">
-            <Avatar alt={row.name} src={row.avatarUrl} />
-            {row.name}
-          </Box>
+          <Link to={`/user/${row.id}`}>
+            <Box gap={2} display="flex" alignItems="center">
+              <Avatar alt={row.name} src={row.avatarUrl} />
+              {row.name}
+            </Box>
+          </Link>
         </TableCell>
 
         <TableCell>{row.role}</TableCell>
@@ -75,12 +79,16 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
         </TableCell>
 
         <TableCell>
+          <Label>{row.experience}</Label>
+        </TableCell>
+
+        <TableCell>{row.grade}</TableCell>
+
+        <TableCell>
           <Label>{row.salary}</Label>
         </TableCell>
 
-        <TableCell>
-          <Label>{row.phone}</Label>
-        </TableCell>
+        <TableCell>{row.phone}</TableCell>
 
         <TableCell>
           <Label>{row.email}</Label>
@@ -120,7 +128,7 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
             },
           }}
         >
-          <MenuItem onClick={handleClosePopover}>
+          <MenuItem onClick={handleEdit}>
             <Iconify icon="solar:pen-bold" />
             Edit
           </MenuItem>

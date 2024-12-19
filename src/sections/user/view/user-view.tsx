@@ -87,6 +87,8 @@ export function UserView() {
                   { id: 'name', label: 'ФИО' },
                   { id: 'role', label: 'Должность' },
                   { id: 'status', label: 'Статус' },
+                  { id: 'experience', label: 'Опыт' },
+                  { id: 'grade', label: 'Грейд' },
                   { id: 'salary', label: 'Зарплата' },
                   { id: 'phone', label: 'Телефон' },
                   { id: 'email', label: 'email' },
