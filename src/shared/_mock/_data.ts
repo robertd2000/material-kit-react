@@ -27,11 +27,11 @@ export const _users = [...Array(24)].map((_, index) => ({
   company: _company(index),
   isVerified: _boolean(index),
   avatarUrl: `/assets/images/avatar/avatar-${index + 1}.webp`,
-  status: index % 4 ? 'active' : 'banned',
+  status: index % 4 ? 'Активен' : 'Забанен',
   salary: _price(index) * 1000,
   phone: '+12345678',
   email: `user${index + 1}@minimals.cc`,
-  gender: index % 2 ? 'male' : 'female',
+  gender: index % 2 ? 'мужчина' : 'женщина',
   experience: Math.floor(Math.random() * 10),
   grade: index % 2 === 0 ? 'Senior' : 'Mid',
   role:

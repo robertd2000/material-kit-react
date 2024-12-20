@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -12,7 +13,7 @@ import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 
 import { Label } from 'src/shared/ui/label';
 import { Iconify } from 'src/shared/ui/iconify';
-import { Link, useNavigate } from 'react-router-dom';
+import { declination } from 'src/shared/utils/format-number';
 
 // ----------------------------------------------------------------------
 
@@ -79,13 +80,13 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
         </TableCell>
 
         <TableCell>
-          <Label>{row.experience}</Label>
+          <Label>{declination(row.experience)}</Label>
         </TableCell>
 
         <TableCell>{row.grade}</TableCell>
 
         <TableCell>
-          <Label>{row.salary}</Label>
+          <Label>{row.salary.toLocaleString(undefined, { minimumFractionDigits: 2 })}</Label>
         </TableCell>
 
         <TableCell>{row.phone}</TableCell>
