@@ -4,19 +4,17 @@ import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 
-import { varAlpha } from 'src/shared/theme/styles';
 import { AuthLayout } from 'src/layouts/auth';
+import { varAlpha } from 'src/shared/theme/styles';
 import { DashboardLayout } from 'src/layouts/dashboard';
 
 // ----------------------------------------------------------------------
 
 export const HomePage = lazy(() => import('src/pages/home'));
-export const BlogPage = lazy(() => import('src/pages/blog'));
-export const UserPage = lazy(() => import('src/pages/user'));
-export const UserCreatePage = lazy(() => import('src/pages/user-create'));
-export const UserEditPage = lazy(() => import('src/pages/user-edit'));
+export const EmployeePage = lazy(() => import('src/pages/employees'));
+export const EmployeeCreatePage = lazy(() => import('src/pages/employees/create/employees-create'));
+export const EmployeeEditPage = lazy(() => import('src/pages/employees/edit/employees-edit'));
 export const SignInPage = lazy(() => import('src/pages/sign-in'));
-export const ProductsPage = lazy(() => import('src/pages/products'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
 
 // ----------------------------------------------------------------------
@@ -46,11 +44,9 @@ export function Router() {
       ),
       children: [
         { element: <HomePage />, index: true },
-        { path: 'user', element: <UserPage /> },
-        { path: 'user/create', element: <UserCreatePage /> },
-        { path: 'user/:id', element: <UserEditPage /> },
-        { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
+        { path: 'employees', element: <EmployeePage /> },
+        { path: 'employees/create', element: <EmployeeCreatePage /> },
+        { path: 'employees/:id', element: <EmployeeEditPage /> },
       ],
     },
     {

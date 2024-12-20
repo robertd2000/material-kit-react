@@ -46,7 +46,7 @@ export function UserView() {
           Сотрудники
         </Typography>
 
-        <Link href="/user/create">
+        <Link href="/employees/create">
           <Button
             variant="contained"
             color="inherit"

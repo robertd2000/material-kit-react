@@ -54,7 +54,7 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
 
   const handleEdit = useCallback(() => {
     handleClosePopover();
-    navigate(`/user/${row.id}`);
+    navigate(`/employees/${row.id}`);
   }, [handleClosePopover, navigate, row.id]);
 
   return (
@@ -65,7 +65,7 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
         </TableCell>
 
         <TableCell component="th" scope="row">
-          <Link to={`/user/${row.id}`}>
+          <Link to={`/employees/${row.id}`}>
             <Box gap={2} display="flex" alignItems="center">
               <Avatar alt={row.name} src={row.avatarUrl} />
               {row.name}
@@ -116,9 +116,9 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
         <MenuList
           disablePadding
           sx={{
-            p: 0.5,
+            p: 1,
             gap: 0.5,
-            width: 140,
+            width: 180,
             display: 'flex',
             flexDirection: 'column',
             [`& .${menuItemClasses.root}`]: {
@@ -131,12 +131,12 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
         >
           <MenuItem onClick={handleEdit}>
             <Iconify icon="solar:pen-bold" />
-            Edit
+            Редактировать
           </MenuItem>
 
           <MenuItem onClick={handleClosePopover} sx={{ color: 'error.main' }}>
             <Iconify icon="solar:trash-bin-trash-bold" />
-            Delete
+            Удалить
           </MenuItem>
         </MenuList>
       </Popover>
