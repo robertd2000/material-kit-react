@@ -86,7 +86,7 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
         <TableCell>{row.grade}</TableCell>
 
         <TableCell>
-          <Label>{row.salary.toLocaleString(undefined, { minimumFractionDigits: 2 })}</Label>
+          <Label>{row.salary.toLocaleString(undefined, { minimumFractionDigits: 2 })} руб.</Label>
         </TableCell>
 
         <TableCell>{row.phone}</TableCell>
