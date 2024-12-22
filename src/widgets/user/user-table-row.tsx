@@ -54,7 +54,7 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
 
   const handleEdit = useCallback(() => {
     handleClosePopover();
-    navigate(`/employees/${row.id}`);
+    navigate(`/employees/${row.id}/edit`);
   }, [handleClosePopover, navigate, row.id]);
 
   return (
@@ -76,7 +76,7 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
         <TableCell>{row.role}</TableCell>
 
         <TableCell>
-          <Label color={(row.status === 'banned' && 'error') || 'success'}>{row.status}</Label>
+          <Label color={(row.status === 'Забанен' && 'error') || 'success'}>{row.status}</Label>
         </TableCell>
 
         <TableCell>

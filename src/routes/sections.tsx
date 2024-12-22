@@ -12,6 +12,7 @@ import { DashboardLayout } from 'src/layouts/dashboard';
 
 export const HomePage = lazy(() => import('src/pages/home'));
 export const EmployeePage = lazy(() => import('src/pages/employees'));
+export const EmployeeShowPage = lazy(() => import('src/pages/employees/show'));
 export const EmployeeCreatePage = lazy(() => import('src/pages/employees/create/employees-create'));
 export const EmployeeEditPage = lazy(() => import('src/pages/employees/edit/employees-edit'));
 export const SignInPage = lazy(() => import('src/pages/sign-in'));
@@ -46,7 +47,8 @@ export function Router() {
         { element: <HomePage />, index: true },
         { path: 'employees', element: <EmployeePage /> },
         { path: 'employees/create', element: <EmployeeCreatePage /> },
-        { path: 'employees/:id', element: <EmployeeEditPage /> },
+        { path: 'employees/:id', element: <EmployeeShowPage /> },
+        { path: 'employees/:id/edit', element: <EmployeeEditPage /> },
       ],
     },
     {

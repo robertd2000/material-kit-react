@@ -8,19 +8,16 @@ import Avatar from '@mui/material/Avatar';
 import CardHeader from '@mui/material/CardHeader';
 import ListItemText from '@mui/material/ListItemText';
 
-import { fToNow } from 'src/shared/utils/format-time';
-
 import { Iconify } from 'src/shared/ui/iconify';
 import { Scrollbar } from 'src/shared/ui/scrollbar';
-
-import type { PostItemProps } from '../blog/post-item';
+import { fToNow } from 'src/shared/utils/format-time';
 
 // ----------------------------------------------------------------------
 
 type Props = CardProps & {
   title?: string;
   subheader?: string;
-  list: PostItemProps[];
+  list: any[];
 };
 
 export function AnalyticsNews({ title, subheader, list, ...other }: Props) {
