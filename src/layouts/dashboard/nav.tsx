@@ -60,7 +60,7 @@ export function NavDesktop({
         bgcolor: 'var(--layout-nav-bg)',
         zIndex: 'var(--layout-nav-zIndex)',
         width: 'var(--layout-nav-vertical-width)',
-        borderRight: `1px solid var(--layout-nav-border-color, ${varAlpha(theme.vars.palette.grey['500Channel'], 0.12)})`,
+        borderRight: `1px solid var(--layout-nav-border-color, ${varAlpha(theme.vars?.palette.grey['500Channel'], 0.12)})`,
         [theme.breakpoints.up(layoutQuery)]: {
           display: 'flex',
         },

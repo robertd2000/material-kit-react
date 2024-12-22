@@ -1,7 +1,7 @@
 import type { Theme } from '@mui/material/styles';
-import { ruRU } from '@mui/material/locale';
 
-import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
+import { ruRU } from '@mui/material/locale';
+import { createTheme as createMuiTheme } from '@mui/material/styles';
 
 import { shadows, typography, components, colorSchemes, customShadows } from './core';
 
@@ -19,7 +19,7 @@ export function createTheme(): Theme {
     shouldSkipGeneratingVar,
   };
 
-  const theme = extendTheme(initialTheme, ruRU);
+  const theme = createMuiTheme();
 
   return theme;
 }

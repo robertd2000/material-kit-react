@@ -25,31 +25,31 @@ export const StyledLabel = styled(Box)(({
        * @variant filled
        */
       ...(variant === 'filled' && {
-        color: theme.vars.palette.common.white,
-        backgroundColor: theme.vars.palette.text.primary,
-        [stylesMode.dark]: { color: theme.vars.palette.grey[800] },
+        color: theme.vars?.palette.common.white,
+        backgroundColor: theme.vars?.palette.text.primary,
+        [stylesMode.dark]: { color: theme.vars?.palette.grey[800] },
       }),
       /**
        * @variant outlined
        */
       ...(variant === 'outlined' && {
         backgroundColor: 'transparent',
-        color: theme.vars.palette.text.primary,
-        border: `2px solid ${theme.vars.palette.text.primary}`,
+        color: theme.vars?.palette.text.primary,
+        border: `2px solid ${theme.vars?.palette.text.primary}`,
       }),
       /**
        * @variant soft
        */
       ...(variant === 'soft' && {
-        color: theme.vars.palette.text.secondary,
-        backgroundColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.16),
+        color: theme.vars?.palette.text.secondary,
+        backgroundColor: varAlpha(theme.vars?.palette.grey['500Channel'], 0.16),
       }),
       /**
        * @variant inverted
        */
       ...(variant === 'inverted' && {
-        color: theme.vars.palette.grey[800],
-        backgroundColor: theme.vars.palette.grey[300],
+        color: theme.vars?.palette.grey[800],
+        backgroundColor: theme.vars?.palette.grey[300],
       }),
     }),
   };
@@ -60,31 +60,31 @@ export const StyledLabel = styled(Box)(({
        * @variant filled
        */
       ...(variant === 'filled' && {
-        color: theme.vars.palette[color].contrastText,
-        backgroundColor: theme.vars.palette[color].main,
+        color: theme.vars?.palette[color].contrastText,
+        backgroundColor: theme.vars?.palette[color].main,
       }),
       /**
        * @variant outlined
        */
       ...(variant === 'outlined' && {
         backgroundColor: 'transparent',
-        color: theme.vars.palette[color].main,
-        border: `2px solid ${theme.vars.palette[color].main}`,
+        color: theme.vars?.palette[color].main,
+        border: `2px solid ${theme.vars?.palette[color].main}`,
       }),
       /**
        * @variant soft
        */
       ...(variant === 'soft' && {
-        color: theme.vars.palette[color].dark,
-        backgroundColor: varAlpha(theme.vars.palette[color].mainChannel, 0.16),
-        [stylesMode.dark]: { color: theme.vars.palette[color].light },
+        color: theme.vars?.palette[color].dark,
+        backgroundColor: varAlpha(theme.vars?.palette[color].mainChannel, 0.16),
+        [stylesMode.dark]: { color: theme.vars?.palette[color].light },
       }),
       /**
        * @variant inverted
        */
       ...(variant === 'inverted' && {
-        color: theme.vars.palette[color].darker,
-        backgroundColor: theme.vars.palette[color].lighter,
+        color: theme.vars?.palette[color].darker,
+        backgroundColor: theme.vars?.palette[color].lighter,
       }),
     }),
   };

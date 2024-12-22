@@ -27,8 +27,10 @@ export const Label = forwardRef<HTMLSpanElement, LabelProps>(
       },
     };
 
+    console.log('theme', theme);
+
     return (
-      <StyledLabel
+      <Box
         ref={ref}
         component="span"
         className={labelClasses.root.concat(className ? ` ${className}` : '')}
@@ -50,7 +52,7 @@ export const Label = forwardRef<HTMLSpanElement, LabelProps>(
             {endIcon}
           </Box>
         )}
-      </StyledLabel>
+      </Box>
     );
   }
 );

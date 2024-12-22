@@ -78,10 +78,10 @@ export function createPaletteChannel(hexPalette: Record<string, string>) {
  */
 export function varAlpha(color: string, opacity = 1) {
   const unsupported =
-    color.startsWith('#') ||
-    color.startsWith('rgb') ||
-    color.startsWith('rgba') ||
-    (!color.includes('var') && color.includes('Channel'));
+    color?.startsWith('#') ||
+    color?.startsWith('rgb') ||
+    color?.startsWith('rgba') ||
+    (!color?.includes('var') && color?.includes('Channel'));
 
   if (unsupported) {
     throw new Error(

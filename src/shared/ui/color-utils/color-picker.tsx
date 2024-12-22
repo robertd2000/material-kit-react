@@ -75,7 +75,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, BoxProps & ColorPickerProp
                     height: 20,
                     bgcolor: color,
                     borderRadius: '50%',
-                    border: `solid 1px ${varAlpha(theme.vars.palette.grey['500Channel'], 0.16)}`,
+                    border: `solid 1px ${varAlpha(theme.vars?.palette.grey['500Channel'], 0.16)}`,
                     ...(hasSelected && {
                       transform: 'scale(1.3)',
                       boxShadow: `4px 4px 8px 0 ${hexAlpha(color, 0.48)}`,
@@ -90,7 +90,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, BoxProps & ColorPickerProp
                     width={hasSelected ? 12 : 0}
                     icon="eva:checkmark-fill"
                     sx={(theme) => ({
-                      color: theme.palette.getContrastText(color),
+                      color: theme?.palette.getContrastText(color),
                       transition: theme.transitions.create('all', {
                         duration: theme.transitions.duration.shortest,
                       }),

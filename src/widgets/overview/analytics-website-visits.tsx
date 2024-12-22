@@ -27,8 +27,8 @@ export function AnalyticsWebsiteVisits({ title, subheader, chart, ...other }: Pr
   const theme = useTheme();
 
   const chartColors = chart.colors ?? [
-    theme.palette.primary.dark,
-    hexAlpha(theme.palette.primary.light, 0.64),
+    theme?.palette.primary.dark,
+    hexAlpha(theme?.palette.primary.light, 0.64),
   ];
 
   const chartOptions = useChart({

@@ -43,7 +43,7 @@ export function Searchbar({ sx, ...other }: BoxProps) {
           <Box
             sx={{
               ...bgBlur({
-                color: theme.vars.palette.background.default,
+                color: theme.vars?.palette.background.default,
               }),
               top: 0,
               left: 0,
@@ -53,7 +53,7 @@ export function Searchbar({ sx, ...other }: BoxProps) {
               position: 'absolute',
               alignItems: 'center',
               px: { xs: 3, md: 5 },
-              boxShadow: theme.customShadows.z8,
+              boxShadow: theme.customShadows?.z8,
               height: {
                 xs: 'var(--layout-header-mobile-height)',
                 md: 'var(--layout-header-desktop-height)',
