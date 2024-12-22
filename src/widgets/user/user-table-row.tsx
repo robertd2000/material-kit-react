@@ -54,7 +54,7 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
 
   const handleEdit = useCallback(() => {
     handleClosePopover();
-    navigate(`/employees/${row.id}`);
+    navigate(`/employees/${row.id}/edit`);
   }, [handleClosePopover, navigate, row.id]);
 
   return (

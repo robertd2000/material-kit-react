@@ -13,14 +13,12 @@ import { fToNow } from 'src/shared/utils/format-time';
 import { Iconify } from 'src/shared/ui/iconify';
 import { Scrollbar } from 'src/shared/ui/scrollbar';
 
-import type { PostItemProps } from '../blog/post-item';
-
 // ----------------------------------------------------------------------
 
 type Props = CardProps & {
   title?: string;
   subheader?: string;
-  list: PostItemProps[];
+  list: any[];
 };
 
 export function AnalyticsNews({ title, subheader, list, ...other }: Props) {
