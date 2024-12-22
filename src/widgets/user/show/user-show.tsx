@@ -2,6 +2,7 @@ import { Box, Grid, Typography } from '@mui/material';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 
+import { UserSkills } from './skills';
 import { UserDetails } from './details';
 
 export function UserShow() {
@@ -14,8 +15,13 @@ export function UserShow() {
       </Box>
 
       <Grid container spacing={2}>
-        <Grid xs={4}>
-          <UserDetails />
+        <Grid xs={4} spacing={2}>
+          <Grid item>
+            <UserDetails />
+          </Grid>
+          <Grid item sx={{ mt: 2 }}>
+            <UserSkills />
+          </Grid>
         </Grid>
         <Grid xs={4}>{/* <Item>size=4</Item> */}</Grid>
         <Grid xs={4}>{/* <Item>size=4</Item> */}</Grid>
