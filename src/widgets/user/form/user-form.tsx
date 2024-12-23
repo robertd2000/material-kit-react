@@ -130,7 +130,6 @@ export function UserForm({ onSave, onCancel, buttonText }: UserFormProps) {
                       minRows={5}
                       type="text"
                       onChange={onChange}
-                      placeholder="Адрес"
                     />
                   )}
                 />
@@ -232,7 +231,6 @@ export function UserForm({ onSave, onCancel, buttonText }: UserFormProps) {
                       minRows={5}
                       type="text"
                       onChange={onChange}
-                      placeholder="Образование"
                     />
                   )}
                 />
