@@ -17,16 +17,17 @@ export function UserShow() {
       </Box>
 
       <Grid container spacing={2}>
-        <Grid item xs={4} spacing={2}>
+        <Grid item container xs={4} spacing={2} direction="column">
           <Grid item>
             <UserDetails />
           </Grid>
-          <Grid item sx={{ mt: 2 }}>
+          <Grid item>
             <UserSkills />
           </Grid>
         </Grid>
-        <Grid xs={8} item>
-          <Grid item spacing={2}>
+
+        <Grid xs={8} item container spacing={2}>
+          <Grid item spacing={2} xs={12}>
             <AnalyticsWebsiteVisits
               title="Website visits"
               subheader="(+43%) than last year"
@@ -39,8 +40,8 @@ export function UserShow() {
               }}
             />
           </Grid>
-          <Grid item container spacing={2}>
-            <Grid xs={12} sm={6} md={3}>
+          <Grid item container spacing={2} xs={12}>
+            <Grid item xs={12} sm={6} md={3}>
               <AnalyticsWidgetSummary
                 title="New users"
                 percent={-0.1}
@@ -54,7 +55,7 @@ export function UserShow() {
               />
             </Grid>
 
-            <Grid xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={3}>
               <AnalyticsWidgetSummary
                 title="Purchase orders"
                 percent={2.8}
@@ -68,7 +69,7 @@ export function UserShow() {
               />
             </Grid>
 
-            <Grid xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={3}>
               <AnalyticsWidgetSummary
                 title="Messages"
                 percent={3.6}

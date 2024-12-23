@@ -33,12 +33,16 @@ export function UserDetails() {
         </Typography>
       </CardContent>
 
-      <CardActions>
+      <CardActions sx={{ m: 1 }}>
         <Link href={`/employees/${id}/edit`}>
           <Button variant="contained" color="inherit">
             Редактировать
           </Button>
         </Link>
+
+        <Button variant="contained" color="error">
+          Удалить
+        </Button>
       </CardActions>
     </Card>
   );
