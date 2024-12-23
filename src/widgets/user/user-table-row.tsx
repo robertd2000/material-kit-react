@@ -76,7 +76,7 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
         <TableCell>{row.role}</TableCell>
 
         <TableCell>
-          <Label color={(row.status === 'banned' && 'error') || 'success'}>{row.status}</Label>
+          <Label color={(row.status === 'Забанен' && 'error') || 'success'}>{row.status}</Label>
         </TableCell>
 
         <TableCell>
@@ -96,7 +96,7 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
         </TableCell>
 
         <TableCell>
-          <Label>{row.gender}</Label>
+          <Label color={row.gender === 'мужчина' ? 'error' : 'success'}>{row.gender}</Label>
         </TableCell>
 
         <TableCell align="right">
