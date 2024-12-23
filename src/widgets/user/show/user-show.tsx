@@ -4,6 +4,14 @@ import { DashboardContent } from 'src/layouts/dashboard';
 import { AnalyticsWebsiteVisits } from 'src/widgets/overview/analytics-website-visits';
 import { AnalyticsWidgetSummary } from 'src/widgets/overview/analytics-widget-summary';
 
+import { _posts, _timeline, _tasks } from 'src/shared/_mock';
+import { AnalyticsConversionRates } from 'src/widgets/overview/analytics-conversion-rates';
+import { AnalyticsCurrentSubject } from 'src/widgets/overview/analytics-current-subject';
+import { AnalyticsNews } from 'src/widgets/overview/analytics-news';
+import { AnalyticsOrderTimeline } from 'src/widgets/overview/analytics-order-timeline';
+import { AnalyticsTasks } from 'src/widgets/overview/analytics-tasks';
+import { AnalyticsTrafficBySite } from 'src/widgets/overview/analytics-traffic-by-site';
+
 import { UserSkills } from './skills';
 import { UserDetails } from './details';
 
@@ -30,8 +38,17 @@ export function UserShow() {
           <Grid item>
             <UserDetails />
           </Grid>
+
           <Grid item>
             <UserSkills />
+          </Grid>
+
+          <Grid item>
+            <AnalyticsTasks title="Tasks" list={_tasks} />
+          </Grid>
+
+          <Grid item>
+            <AnalyticsOrderTimeline title="Order timeline" list={_timeline} />
           </Grid>
         </Grid>
 
@@ -91,6 +108,49 @@ export function UserShow() {
                 }}
               />
             </Grid>
+          </Grid>
+
+          <Grid item xs={12}>
+            <AnalyticsConversionRates
+              title="Conversion rates"
+              subheader="(+43%) than last year"
+              chart={{
+                categories: ['Italy', 'Japan', 'China', 'Canada', 'France'],
+                series: [
+                  { name: '2022', data: [44, 55, 41, 64, 22] },
+                  { name: '2023', data: [53, 32, 33, 52, 13] },
+                ],
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <AnalyticsNews title="News" list={_posts.slice(0, 5)} />
+          </Grid>
+
+          <Grid item xs={12} md={8} lg={8}>
+            <AnalyticsCurrentSubject
+              title="Current subject"
+              chart={{
+                categories: ['English', 'History', 'Physics', 'Geography', 'Chinese', 'Math'],
+                series: [
+                  { name: 'Series 1', data: [80, 50, 30, 40, 100, 20] },
+                  { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
+                  { name: 'Series 3', data: [44, 76, 78, 13, 43, 10] },
+                ],
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} md={4} lg={4}>
+            <AnalyticsTrafficBySite
+              title="Traffic by site"
+              list={[
+                { value: 'facebook', label: 'Facebook', total: 323234 },
+                { value: 'google', label: 'Google', total: 341212 },
+                { value: 'linkedin', label: 'Linkedin', total: 411213 },
+                { value: 'twitter', label: 'Twitter', total: 443232 },
+              ]}
+            />
           </Grid>
         </Grid>
         <Grid xs={4}>{/* <Item>size=4</Item> */}</Grid>
