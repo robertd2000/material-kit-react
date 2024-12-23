@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Breadcrumbs, Grid, Link, Typography } from '@mui/material';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 import { AnalyticsWebsiteVisits } from 'src/widgets/overview/analytics-website-visits';
@@ -14,6 +14,15 @@ export function UserShow() {
         <Typography variant="h4" flexGrow={1}>
           Профиль сотрудника
         </Typography>
+      </Box>
+
+      <Box display="flex" alignItems="center" mb={5}>
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link underline="hover" color="inherit" href="/employees">
+            Сотрудники
+          </Link>
+          <Typography color="text.primary">Профиль</Typography>
+        </Breadcrumbs>
       </Box>
 
       <Grid container spacing={2}>
@@ -41,7 +50,7 @@ export function UserShow() {
             />
           </Grid>
           <Grid item container spacing={2} xs={12}>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <AnalyticsWidgetSummary
                 title="New users"
                 percent={-0.1}
@@ -55,7 +64,7 @@ export function UserShow() {
               />
             </Grid>
 
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <AnalyticsWidgetSummary
                 title="Purchase orders"
                 percent={2.8}
@@ -69,7 +78,7 @@ export function UserShow() {
               />
             </Grid>
 
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={4}>
               <AnalyticsWidgetSummary
                 title="Messages"
                 percent={3.6}

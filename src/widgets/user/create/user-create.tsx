@@ -1,6 +1,6 @@
 import type { UserFormValues } from 'src/shared/types/user';
 
-import { Box, Typography } from '@mui/material';
+import { Box, Breadcrumbs, Link, Typography } from '@mui/material';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 
@@ -20,6 +20,16 @@ export function UserCreate() {
           Создать сотрудника
         </Typography>
       </Box>
+
+      <Box display="flex" alignItems="center" mb={5}>
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link underline="hover" color="inherit" href="/employees">
+            Сотрудники
+          </Link>
+          <Typography color="text.primary">Профиль</Typography>
+        </Breadcrumbs>
+      </Box>
+
       <UserForm onSave={onSave} onCancel={onCancel} buttonText={<>Создать</>} />
     </DashboardContent>
   );
