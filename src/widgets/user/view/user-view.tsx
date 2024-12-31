@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 import Box from '@mui/material/Box';
 import { Link } from '@mui/material';
@@ -13,6 +14,7 @@ import TablePagination from '@mui/material/TablePagination';
 import { _users } from 'src/shared/_mock';
 import { Iconify } from 'src/shared/ui/iconify';
 import { Scrollbar } from 'src/shared/ui/scrollbar';
+import { getEmployees } from 'src/shared/api/employee';
 import { DashboardContent } from 'src/layouts/dashboard';
 
 import { TableNoData } from '../table-no-data';
@@ -30,6 +32,13 @@ export function UserView() {
   const table = useTable();
 
   const [filterName, setFilterName] = useState('');
+
+  const { data } = useQuery({
+    queryFn: getEmployees,
+    queryKey: ['getEmployees'],
+  });
+
+  console.log('data', data);
 
   const dataFiltered: UserProps[] = applyFilter({
     inputData: _users,
