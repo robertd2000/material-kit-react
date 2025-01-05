@@ -14,27 +14,12 @@ import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 import { Label } from 'src/shared/ui/label';
 import { Iconify } from 'src/shared/ui/iconify';
 import { declination } from 'src/shared/utils/format-number';
+import { Employee, StatusEnum } from 'src/shared/types/employee';
 
 // ----------------------------------------------------------------------
 
-export type UserProps = {
-  id: string;
-  name: string;
-  role: string;
-  status: string;
-  company: string;
-  avatarUrl: string;
-  isVerified: boolean;
-  salary: number;
-  phone: string;
-  email: string;
-  gender: string;
-  experience: number;
-  grade: string;
-};
-
 type UserTableRowProps = {
-  row: UserProps;
+  row: Employee;
   selected: boolean;
   onSelectRow: () => void;
 };
@@ -67,36 +52,38 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
         <TableCell component="th" scope="row">
           <Link to={`/employees/${row.id}`}>
             <Box gap={2} display="flex" alignItems="center">
-              <Avatar alt={row.name} src={row.avatarUrl} />
-              {row.name}
+              <Avatar alt={row.username} src={`/assets/images/avatar/avatar-${row.id + 1}.webp`} />
+              {row.profile.first_name} {row.profile.last_name}
             </Box>
           </Link>
         </TableCell>
 
-        <TableCell>{row.role}</TableCell>
+        <TableCell>{row.profile.profession}</TableCell>
 
         <TableCell>
-          <Label color={(row.status === 'Забанен' && 'error') || 'success'}>{row.status}</Label>
+          <Label color={(row.profile.status === StatusEnum.BANNED && 'error') || 'success'}>
+            {row.profile.status}
+          </Label>
         </TableCell>
+
+        <TableCell>{row.profile.grade}</TableCell>
 
         <TableCell>
-          <Label>{declination(row.experience)}</Label>
+          <Label>
+            {row.profile.salary.toLocaleString(undefined, { minimumFractionDigits: 2 })} руб.
+          </Label>
         </TableCell>
 
-        <TableCell>{row.grade}</TableCell>
-
-        <TableCell>
-          <Label>{row.salary.toLocaleString(undefined, { minimumFractionDigits: 2 })} руб.</Label>
-        </TableCell>
-
-        <TableCell>{row.phone}</TableCell>
+        <TableCell>{row.profile.phone}</TableCell>
 
         <TableCell>
           <Label>{row.email}</Label>
         </TableCell>
 
         <TableCell>
-          <Label color={row.gender === 'мужчина' ? 'error' : 'success'}>{row.gender}</Label>
+          <Label color={row.profile.gender === 'мужчина' ? 'error' : 'success'}>
+            {row.profile.gender}
+          </Label>
         </TableCell>
 
         <TableCell align="right">

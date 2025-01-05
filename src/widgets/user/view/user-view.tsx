@@ -1,3 +1,5 @@
+import type { Employee } from 'src/shared/types/employee';
+
 import { useState, useCallback } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
@@ -24,8 +26,6 @@ import { TableEmptyRows } from '../table-empty-rows';
 import { UserTableToolbar } from '../user-table-toolbar';
 import { emptyRows, applyFilter, getComparator } from '../utils';
 
-import type { UserProps } from '../user-table-row';
-
 // ----------------------------------------------------------------------
 
 export function UserView() {
@@ -40,8 +40,8 @@ export function UserView() {
 
   console.log('data', data);
 
-  const dataFiltered: UserProps[] = applyFilter({
-    inputData: _users,
+  const dataFiltered: Employee[] = applyFilter({
+    inputData: data || [],
     comparator: getComparator(table.order, table.orderBy),
     filterName,
   });
@@ -95,7 +95,6 @@ export function UserView() {
                   { id: 'name', label: 'ФИО' },
                   { id: 'role', label: 'Должность' },
                   { id: 'status', label: 'Статус' },
-                  { id: 'experience', label: 'Опыт' },
                   { id: 'grade', label: 'Грейд' },
                   { id: 'salary', label: 'Зарплата' },
                   { id: 'phone', label: 'Телефон' },
@@ -114,8 +113,8 @@ export function UserView() {
                     <UserTableRow
                       key={row.id}
                       row={row}
-                      selected={table.selected.includes(row.id)}
-                      onSelectRow={() => table.onSelectRow(row.id)}
+                      selected={table.selected.includes(row?.id.toString())}
+                      onSelectRow={() => table.onSelectRow(row?.id.toString())}
                     />
                   ))}
 
