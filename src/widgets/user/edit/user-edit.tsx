@@ -1,8 +1,11 @@
 import type { UserFormValues } from 'src/shared/types/user';
 
 import { useParams } from 'react-router-dom';
-import { Box, Breadcrumbs, Link, Typography } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 
+import { Box, Link, Typography, Breadcrumbs } from '@mui/material';
+
+import { getEmployee } from 'src/shared/api/employee';
 import { DashboardContent } from 'src/layouts/dashboard';
 
 import { UserForm } from '../form';
@@ -10,8 +13,15 @@ import { UserForm } from '../form';
 export function UserEdit() {
   const { id } = useParams();
 
-  const onSave = (data: UserFormValues) => {
-    console.log('onSave', data);
+  const { data } = useQuery({
+    queryFn: () => getEmployee(id as unknown as number),
+    queryKey: ['getEmployee', id],
+  });
+
+  console.log('data', data);
+
+  const onSave = (savedData: UserFormValues) => {
+    console.log('onSave', savedData);
   };
 
   const onCancel = () => {};

@@ -1,21 +1,33 @@
-import { Box, Breadcrumbs, Grid, Link, Typography } from '@mui/material';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
+import { Box, Grid, Link, Typography, Breadcrumbs } from '@mui/material';
+
+import { getEmployee } from 'src/shared/api/employee';
 import { DashboardContent } from 'src/layouts/dashboard';
+import { _posts, _tasks, _timeline } from 'src/shared/_mock';
+import { AnalyticsNews } from 'src/widgets/overview/analytics-news';
+import { AnalyticsTasks } from 'src/widgets/overview/analytics-tasks';
 import { AnalyticsWebsiteVisits } from 'src/widgets/overview/analytics-website-visits';
 import { AnalyticsWidgetSummary } from 'src/widgets/overview/analytics-widget-summary';
-
-import { _posts, _timeline, _tasks } from 'src/shared/_mock';
-import { AnalyticsConversionRates } from 'src/widgets/overview/analytics-conversion-rates';
-import { AnalyticsCurrentSubject } from 'src/widgets/overview/analytics-current-subject';
-import { AnalyticsNews } from 'src/widgets/overview/analytics-news';
 import { AnalyticsOrderTimeline } from 'src/widgets/overview/analytics-order-timeline';
-import { AnalyticsTasks } from 'src/widgets/overview/analytics-tasks';
 import { AnalyticsTrafficBySite } from 'src/widgets/overview/analytics-traffic-by-site';
+import { AnalyticsCurrentSubject } from 'src/widgets/overview/analytics-current-subject';
+import { AnalyticsConversionRates } from 'src/widgets/overview/analytics-conversion-rates';
 
 import { UserSkills } from './skills';
 import { UserDetails } from './details';
 
 export function UserShow() {
+  const { id } = useParams();
+
+  const { data } = useQuery({
+    queryFn: () => getEmployee(id as unknown as number),
+    queryKey: ['getEmployee', id],
+  });
+
+  console.log('data', data);
+
   return (
     <DashboardContent>
       <Box display="flex" alignItems="center" mb={5}>
