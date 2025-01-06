@@ -48,7 +48,7 @@ export function UserShow() {
       <Grid container spacing={2}>
         <Grid item container xs={4} spacing={2} direction="column">
           <Grid item>
-            <UserDetails />
+            <UserDetails data={data} />
           </Grid>
 
           <Grid item>
