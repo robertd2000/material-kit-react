@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import Box from '@mui/material/Box';
-import { Link } from '@mui/material';
+import { CircularProgress, Link } from '@mui/material';
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
@@ -33,12 +33,10 @@ export function UserView() {
 
   const [filterName, setFilterName] = useState('');
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryFn: getEmployees,
     queryKey: ['getEmployees'],
   });
-
-  console.log('data', data);
 
   const dataFiltered: Employee[] = applyFilter({
     inputData: data || [],
@@ -47,6 +45,10 @@ export function UserView() {
   });
 
   const notFound = !dataFiltered.length && !!filterName;
+
+  if (isLoading) {
+    return <CircularProgress />;
+  }
 
   return (
     <DashboardContent>
