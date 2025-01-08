@@ -19,6 +19,24 @@ export interface Profile {
   phone: string;
 }
 
+export interface CreateEmployee {
+  username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  age: number;
+  gender: string;
+  profession: string;
+  interests: string[];
+  contacts: Contacts;
+  grade: string;
+  status: string;
+  salary: number;
+  phone: string;
+}
+
+export interface Contacts {}
+
 export enum GenderEnum {
   MALE = 'мужчина',
   FEMALE = 'женщина',
