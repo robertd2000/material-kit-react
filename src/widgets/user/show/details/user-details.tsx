@@ -1,24 +1,32 @@
+import type { Employee } from 'src/shared/types/employee';
+
 import { useParams } from 'react-router-dom';
 
 import {
   Card,
   Link,
+  Grid,
   Button,
   CardMedia,
   Typography,
   CardHeader,
   CardContent,
   CardActions,
-  Grid,
 } from '@mui/material';
-import { _users } from 'src/shared/_mock';
-import { declination } from 'src/shared/utils/format-number';
-import { Label } from 'src/shared/ui/label';
 
-export function UserDetails() {
+import { Label } from 'src/shared/ui/label';
+import { StatusEnum } from 'src/shared/types/employee';
+
+interface UserDetailsProps {
+  data?: Employee;
+}
+
+export function UserDetails({ data }: UserDetailsProps) {
   const { id } = useParams();
 
-  const employee = _users[0];
+  if (!data) return null;
+
+  const employee = data.profile;
 
   return (
     <Card>
@@ -32,23 +40,18 @@ export function UserDetails() {
 
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {data.username}
         </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          Front end developer
-        </Typography>
+
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            Должность: {employee.role}
+            Должность: {employee.profession}
           </Grid>
           <Grid item xs={12}>
             Статус:{' '}
-            <Label color={(employee.status === 'Забанен' && 'error') || 'success'}>
+            <Label color={(employee.status === StatusEnum.BANNED && 'error') || 'success'}>
               {employee.status}
             </Label>
-          </Grid>
-          <Grid item xs={12}>
-            Опыт: <Label>{declination(employee.experience)}</Label>
           </Grid>
           <Grid item xs={12}>
             Грейд: {employee.grade}
@@ -61,7 +64,7 @@ export function UserDetails() {
           </Grid>
           <Grid item>Телефон: {employee.phone}</Grid>
           <Grid item xs={12}>
-            email: <Label>{employee.email}</Label>
+            email: <Label>{data.email}</Label>
           </Grid>
           <Grid item xs={12}>
             {' '}

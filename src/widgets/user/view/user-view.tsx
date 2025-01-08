@@ -1,7 +1,10 @@
+import type { Employee } from 'src/shared/types/employee';
+
 import { useState, useCallback } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 import Box from '@mui/material/Box';
-import { Link } from '@mui/material';
+import { CircularProgress, Link } from '@mui/material';
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
@@ -13,6 +16,7 @@ import TablePagination from '@mui/material/TablePagination';
 import { _users } from 'src/shared/_mock';
 import { Iconify } from 'src/shared/ui/iconify';
 import { Scrollbar } from 'src/shared/ui/scrollbar';
+import { getEmployees } from 'src/shared/api/employee';
 import { DashboardContent } from 'src/layouts/dashboard';
 
 import { TableNoData } from '../table-no-data';
@@ -22,8 +26,6 @@ import { TableEmptyRows } from '../table-empty-rows';
 import { UserTableToolbar } from '../user-table-toolbar';
 import { emptyRows, applyFilter, getComparator } from '../utils';
 
-import type { UserProps } from '../user-table-row';
-
 // ----------------------------------------------------------------------
 
 export function UserView() {
@@ -31,13 +33,22 @@ export function UserView() {
 
   const [filterName, setFilterName] = useState('');
 
-  const dataFiltered: UserProps[] = applyFilter({
-    inputData: _users,
+  const { data, isLoading } = useQuery({
+    queryFn: getEmployees,
+    queryKey: ['getEmployees'],
+  });
+
+  const dataFiltered: Employee[] = applyFilter({
+    inputData: data || [],
     comparator: getComparator(table.order, table.orderBy),
     filterName,
   });
 
   const notFound = !dataFiltered.length && !!filterName;
+
+  if (isLoading) {
+    return <CircularProgress />;
+  }
 
   return (
     <DashboardContent>
@@ -86,7 +97,6 @@ export function UserView() {
                   { id: 'name', label: 'ФИО' },
                   { id: 'role', label: 'Должность' },
                   { id: 'status', label: 'Статус' },
-                  { id: 'experience', label: 'Опыт' },
                   { id: 'grade', label: 'Грейд' },
                   { id: 'salary', label: 'Зарплата' },
                   { id: 'phone', label: 'Телефон' },
@@ -105,8 +115,8 @@ export function UserView() {
                     <UserTableRow
                       key={row.id}
                       row={row}
-                      selected={table.selected.includes(row.id)}
-                      onSelectRow={() => table.onSelectRow(row.id)}
+                      selected={table.selected.includes(row?.id.toString())}
+                      onSelectRow={() => table.onSelectRow(row?.id.toString())}
                     />
                   ))}
 
