@@ -1,17 +1,37 @@
 import type { UserFormValues } from 'src/shared/types/user';
 
-import { Box, Breadcrumbs, Link, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+
+import { Box, Link, Typography, Breadcrumbs } from '@mui/material';
 
 import { DashboardContent } from 'src/layouts/dashboard';
+import { createEmployee } from 'src/shared/api/employee';
 
 import { UserForm } from '../form';
 
 export function UserCreate() {
+  const navigate = useNavigate();
+
+  const { mutate } = useMutation({
+    mutationKey: ['createUser'],
+    mutationFn: createEmployee,
+    onSuccess() {
+      navigate('/employees');
+    },
+  });
+
   const onSave = (data: UserFormValues) => {
-    console.log('onSave', data);
+    mutate({
+      ...data,
+      interests: [],
+      contacts: {},
+    });
   };
 
-  const onCancel = () => {};
+  const onCancel = () => {
+    navigate('/employees');
+  };
 
   return (
     <DashboardContent>

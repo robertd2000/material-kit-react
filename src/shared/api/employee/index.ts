@@ -16,7 +16,7 @@ export async function getEmployee(id: number): Promise<Employee> {
 
 export async function createEmployee(employee: CreateEmployee) {
   const { data } = await base.post(`/employees`, {
-    data: employee,
+    ...employee,
   });
 
   return data;
