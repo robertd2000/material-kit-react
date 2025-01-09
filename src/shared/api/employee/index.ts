@@ -1,4 +1,4 @@
-import type { Employee } from 'src/shared/types/employee';
+import type { Employee, CreateEmployee } from 'src/shared/types/employee';
 
 import base from '../base';
 
@@ -10,6 +10,14 @@ export async function getEmployees(): Promise<Employee[]> {
 
 export async function getEmployee(id: number): Promise<Employee> {
   const { data } = await base.get(`/employees/${id}`);
+
+  return data;
+}
+
+export async function createEmployee(employee: CreateEmployee) {
+  const { data } = await base.post(`/employees`, {
+    ...employee,
+  });
 
   return data;
 }
