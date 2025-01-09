@@ -1,4 +1,4 @@
-import type { Employee, CreateEmployee } from 'src/shared/types/employee';
+import type { Employee, CreateEmployee, UpdateEmployee } from 'src/shared/types/employee';
 
 import base from '../base';
 
@@ -18,6 +18,12 @@ export async function createEmployee(employee: CreateEmployee) {
   const { data } = await base.post(`/employees`, {
     ...employee,
   });
+
+  return data;
+}
+
+export async function updateEmployee(employee: UpdateEmployee): Promise<Employee> {
+  const { data } = await base.put(`/employees/${employee.id}`, employee);
 
   return data;
 }

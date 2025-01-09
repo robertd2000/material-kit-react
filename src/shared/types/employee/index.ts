@@ -35,6 +35,10 @@ export interface CreateEmployee {
   phone: string;
 }
 
+export interface UpdateEmployee extends CreateEmployee {
+  id: number;
+}
+
 export interface Contacts {}
 
 export enum GenderEnum {

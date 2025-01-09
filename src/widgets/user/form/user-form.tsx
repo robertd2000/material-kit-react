@@ -1,20 +1,20 @@
 import type { ReactNode } from 'react';
+import type { UseFormReturn } from 'react-hook-form';
 import type { UserFormValues } from 'src/shared/types/user';
 
-import { useForm, Controller, FormProvider } from 'react-hook-form';
+import { Controller, FormProvider } from 'react-hook-form';
 
 import { LoadingButton } from '@mui/lab';
-import { Box, Card, Grid, MenuItem, Select, TextField, InputLabel } from '@mui/material';
+import { Box, Card, Grid, MenuItem, TextField } from '@mui/material';
 
 interface UserFormProps {
   onSave: (data: UserFormValues) => void;
   onCancel: () => void;
+  methods: UseFormReturn<UserFormValues, any, undefined>;
   buttonText: ReactNode;
 }
 
-export function UserForm({ onSave, onCancel, buttonText }: UserFormProps) {
-  const methods = useForm<UserFormValues>();
-
+export function UserForm({ onSave, onCancel, methods, buttonText }: UserFormProps) {
   const {
     control,
     handleSubmit,

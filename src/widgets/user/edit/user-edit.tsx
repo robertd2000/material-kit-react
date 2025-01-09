@@ -1,27 +1,40 @@
 import type { UserFormValues } from 'src/shared/types/user';
 
+import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 
 import { Box, Link, Typography, Breadcrumbs } from '@mui/material';
 
-import { getEmployee } from 'src/shared/api/employee';
 import { DashboardContent } from 'src/layouts/dashboard';
+import { getEmployee, updateEmployee } from 'src/shared/api/employee';
 
 import { UserForm } from '../form';
 
 export function UserEdit() {
   const { id } = useParams();
+  const methods = useForm<UserFormValues>();
 
-  const { data } = useQuery({
-    queryFn: () => getEmployee(id as unknown as number),
+  const { reset } = methods;
+
+  useQuery({
+    queryFn: async () => {
+      const employeeData = await getEmployee(Number(id));
+
+      reset({ ...employeeData, ...employeeData.profile });
+
+      return employeeData;
+    },
     queryKey: ['getEmployee', id],
   });
 
-  console.log('data', data);
+  const { mutate } = useMutation({
+    mutationKey: ['updateEmployee'],
+    mutationFn: updateEmployee,
+  });
 
   const onSave = (savedData: UserFormValues) => {
-    console.log('onSave', savedData);
+    mutate({ ...savedData, id: Number(id), status: 'Активен', contacts: {}, interests: [] });
   };
 
   const onCancel = () => {};
@@ -48,7 +61,7 @@ export function UserEdit() {
         </Breadcrumbs>
       </Box>
 
-      <UserForm onSave={onSave} onCancel={onCancel} buttonText={<>Сохранить</>} />
+      <UserForm onSave={onSave} onCancel={onCancel} methods={methods} buttonText={<>Сохранить</>} />
     </DashboardContent>
   );
 }

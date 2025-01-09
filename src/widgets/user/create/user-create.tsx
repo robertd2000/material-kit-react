@@ -1,5 +1,6 @@
 import type { UserFormValues } from 'src/shared/types/user';
 
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 
@@ -11,6 +12,8 @@ import { createEmployee } from 'src/shared/api/employee';
 import { UserForm } from '../form';
 
 export function UserCreate() {
+  const methods = useForm<UserFormValues>();
+
   const navigate = useNavigate();
 
   const { mutate } = useMutation({
@@ -51,7 +54,7 @@ export function UserCreate() {
         </Breadcrumbs>
       </Box>
 
-      <UserForm onSave={onSave} onCancel={onCancel} buttonText={<>Создать</>} />
+      <UserForm onSave={onSave} onCancel={onCancel} methods={methods} buttonText={<>Создать</>} />
     </DashboardContent>
   );
 }
