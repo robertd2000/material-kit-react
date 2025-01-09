@@ -138,16 +138,20 @@ export function UserForm({ onSave, onCancel, buttonText }: UserFormProps) {
                   control={control}
                   render={({ field: { value, onChange } }) => (
                     <TextField
-                      fullWidth
-                      required
+                      select
                       name="grade"
+                      fullWidth
                       label="Уровень"
+                      required
+                      value={value}
+                      onChange={onChange}
                       InputLabelProps={{ shrink: true }}
                       sx={{ mb: 3 }}
-                      value={value}
-                      type="text"
-                      onChange={onChange}
-                    />
+                    >
+                      <MenuItem value="JUNIOR">JUNIOR</MenuItem>
+                      <MenuItem value="MIDDLE">MIDDLE</MenuItem>
+                      <MenuItem value="SENIOR">SENIOR</MenuItem>
+                    </TextField>
                   )}
                 />
               </Grid>
@@ -238,41 +242,20 @@ export function UserForm({ onSave, onCancel, buttonText }: UserFormProps) {
                   name="gender"
                   control={control}
                   render={({ field: { value, onChange } }) => (
-                    <>
-                      {/* <InputLabel id="gender">Пол</InputLabel> */}
-                      <TextField
-                        select
-                        name="gender"
-                        fullWidth
-                        label="Age"
-                        required
-                        value={value}
-                        onChange={onChange}
-                      >
-                        <MenuItem value="мужчина">мужчина</MenuItem>
-                        <MenuItem value="женщина">женщина</MenuItem>
-                      </TextField>
-                    </>
-                  )}
-                />
-              </Grid>
-
-              <Grid item xs={6}>
-                <Controller
-                  name="status"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
                     <TextField
+                      select
+                      name="gender"
                       fullWidth
+                      label="Пол"
                       required
-                      name="status"
-                      label="Статус"
+                      value={value}
+                      onChange={onChange}
                       InputLabelProps={{ shrink: true }}
                       sx={{ mb: 3 }}
-                      value={value}
-                      type="text"
-                      onChange={onChange}
-                    />
+                    >
+                      <MenuItem value="мужчина">мужчина</MenuItem>
+                      <MenuItem value="женщина">женщина</MenuItem>
+                    </TextField>
                   )}
                 />
               </Grid>

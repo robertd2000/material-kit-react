@@ -26,6 +26,7 @@ export function UserCreate() {
       ...data,
       interests: [],
       contacts: {},
+      status: 'Активен',
     });
   };
 
