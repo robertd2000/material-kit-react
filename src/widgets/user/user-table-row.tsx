@@ -1,3 +1,5 @@
+import type { Employee } from 'src/shared/types/employee';
+
 import { useState, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -13,8 +15,7 @@ import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 
 import { Label } from 'src/shared/ui/label';
 import { Iconify } from 'src/shared/ui/iconify';
-import { declination } from 'src/shared/utils/format-number';
-import { Employee, StatusEnum } from 'src/shared/types/employee';
+import { StatusEnum } from 'src/shared/types/employee';
 
 // ----------------------------------------------------------------------
 
@@ -22,9 +23,10 @@ type UserTableRowProps = {
   row: Employee;
   selected: boolean;
   onSelectRow: () => void;
+  onDelete: () => void;
 };
 
-export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) {
+export function UserTableRow({ row, selected, onSelectRow, onDelete }: UserTableRowProps) {
   const [openPopover, setOpenPopover] = useState<HTMLButtonElement | null>(null);
 
   const handleOpenPopover = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
@@ -121,7 +123,7 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
             Редактировать
           </MenuItem>
 
-          <MenuItem onClick={handleClosePopover} sx={{ color: 'error.main' }}>
+          <MenuItem onClick={onDelete} sx={{ color: 'error.main' }}>
             <Iconify icon="solar:trash-bin-trash-bold" />
             Удалить
           </MenuItem>

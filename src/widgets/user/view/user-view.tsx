@@ -1,23 +1,23 @@
 import type { Employee } from 'src/shared/types/employee';
 
 import { useState, useCallback } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 import Box from '@mui/material/Box';
-import { CircularProgress, Link } from '@mui/material';
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
 import TableBody from '@mui/material/TableBody';
 import Typography from '@mui/material/Typography';
+import { Link, CircularProgress } from '@mui/material';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 
 import { _users } from 'src/shared/_mock';
 import { Iconify } from 'src/shared/ui/iconify';
 import { Scrollbar } from 'src/shared/ui/scrollbar';
-import { getEmployees } from 'src/shared/api/employee';
 import { DashboardContent } from 'src/layouts/dashboard';
+import { getEmployees, deleteEmployee } from 'src/shared/api/employee';
 
 import { TableNoData } from '../table-no-data';
 import { UserTableRow } from '../user-table-row';
@@ -45,6 +45,17 @@ export function UserView() {
   });
 
   const notFound = !dataFiltered.length && !!filterName;
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation({
+    mutationKey: ['deleteEmployee'],
+    mutationFn: deleteEmployee,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['getEmployees'] });
+    },
+  });
+
+  const onDelete = useCallback((id: number) => mutate(id), [mutate]);
 
   if (isLoading) {
     return <CircularProgress />;
@@ -117,6 +128,7 @@ export function UserView() {
                       row={row}
                       selected={table.selected.includes(row?.id.toString())}
                       onSelectRow={() => table.onSelectRow(row?.id.toString())}
+                      onDelete={() => onDelete(row.id)}
                     />
                   ))}
 

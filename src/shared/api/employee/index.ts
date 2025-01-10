@@ -27,3 +27,9 @@ export async function updateEmployee(employee: UpdateEmployee): Promise<Employee
 
   return data;
 }
+
+export async function deleteEmployee(id: number): Promise<Employee> {
+  const { data } = await base.delete(`/employees/${id}`);
+
+  return data;
+}
